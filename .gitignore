@@ -1,0 +1,9 @@
+Opencv/.gradle
+Opencv/local.properties
+Opencv/.idea
+Opencv/.DS_Store
+Opencv/build
+Opencv/captures
+Opencv/Opencv.iml
+Opencv/app/app.iml
+Opencv/openCVLibrary310/openCVLibrary310.iml
