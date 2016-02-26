@@ -169,4 +169,5 @@ public class MainActivity extends Activity {
     };
 
     //http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html - haar classifier creation
+    //https://solarianprogrammer.com/2015/05/08/detect-red-circles-image-using-opencv/ - circles
 }
