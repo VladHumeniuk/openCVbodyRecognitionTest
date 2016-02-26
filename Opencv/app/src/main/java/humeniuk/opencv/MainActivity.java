@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mCameraViewBase.setMaxFrameSize(800, 600);
+        mCameraViewBase.setMaxFrameSize(360, 240);
         mCameraViewBase.setVisibility(View.VISIBLE);
         mCameraViewBase.setCvCameraViewListener(mCameraListener);
     }
@@ -84,6 +84,9 @@ public class MainActivity extends Activity {
     }
 
     CameraBridgeViewBase.CvCameraViewListener2 mCameraListener = new CameraBridgeViewBase.CvCameraViewListener2() {
+
+        private CascadeClassifier mCascadeClassifier = new CascadeClassifier(Environment.getExternalStorageDirectory().getAbsolutePath() + haarFileName);
+
         @Override
         public void onCameraViewStarted(int width, int height) {
 
@@ -96,18 +99,21 @@ public class MainActivity extends Activity {
 
         @Override
         public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
+            long time = System.currentTimeMillis();
+            Log.d("testCVframe","start");
             Mat mat = inputFrame.rgba();
-            CascadeClassifier cascadeClassifier = new CascadeClassifier(Environment.getExternalStorageDirectory().getAbsolutePath() + haarFileName);
             MatOfRect rect = new MatOfRect();
-            cascadeClassifier.detectMultiScale(mat, rect);
+            mCascadeClassifier.detectMultiScale(mat, rect);
+            Log.d("testCVframe", "detect " + (System.currentTimeMillis() - time));
             Scalar renk = new Scalar(255, 0, 0);
             for(Rect dik : rect.toArray()) {
                 Imgproc.rectangle(mat, new Point(dik.x, dik.y), new Point(dik.x + dik.width, dik.y + dik.height), renk);
             }
+            Log.d("testCVframe","end");
             Log.d("testCV","" + rect.height());
 
             return mat;
         }
     };
-
+    //http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html - haar classifier creation
 }

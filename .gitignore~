@@ -1,0 +1,8 @@
+CustomCamera/.gradle
+CustomCamera/local.properties
+CustomCamera/.idea
+CustomCamera/.DS_Store
+CustomCamera/build
+CustomCamera/captures
+CustomCamera/CustomCamera.iml
+CustomCamera/app/app.iml
