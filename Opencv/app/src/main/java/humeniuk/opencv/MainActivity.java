@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mCameraViewBase.setMaxFrameSize(360, 240);
+        mCameraViewBase.setMaxFrameSize(480, 300);
         mCameraViewBase.setVisibility(View.VISIBLE);
         mCameraViewBase.setCvCameraViewListener(mCameraListener);
     }
