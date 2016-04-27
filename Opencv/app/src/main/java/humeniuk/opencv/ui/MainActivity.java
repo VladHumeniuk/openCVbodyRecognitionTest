@@ -1,4 +1,4 @@
-package humeniuk.opencv;
+package humeniuk.opencv.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,10 +10,6 @@ import android.view.WindowManager;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
-import org.opencv.core.Point;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
-import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
 import java.io.File;
@@ -23,13 +19,16 @@ import java.io.InputStream;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import humeniuk.opencv.R;
+import humeniuk.opencv.utils.DetectorExecutionManager;
+import humeniuk.opencv.utils.ExerciseHandler;
 
 public class MainActivity extends Activity {
 
     private static final String haarFileName = "/haarcascade_fullbody.xml";
     private String haarFile = "";
     private int frameCount = 0;
-    private CascadeClassifier mCascadeClassifier;
+    private DetectorExecutionManager mDetectorManager;
 
     @Bind(R.id.HelloOpenCvView) CameraBridgeViewBase mCameraViewBase;
 
@@ -41,10 +40,10 @@ public class MainActivity extends Activity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
-        mCascadeClassifier = new CascadeClassifier(Environment.getExternalStorageDirectory().getAbsolutePath() + haarFileName);
         ButterKnife.bind(this);
 
-        mCameraViewBase.setMaxFrameSize(800, 600);
+        mDetectorManager = new DetectorExecutionManager();
+        mCameraViewBase.setMaxFrameSize(360, 240);
         mCameraViewBase.setVisibility(View.VISIBLE);
         mCameraViewBase.setCvCameraViewListener(mCameraListener);
     }
@@ -100,33 +99,11 @@ public class MainActivity extends Activity {
         private Mat detectFullBody(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
             Mat mat = inputFrame.rgba();
             if (frameCount  == 0) {
-                Log.d("service", "posted");
-                new Thread(new Detector(mat)).start();
+                mDetectorManager.pushMat(mat);
             }
             return mat;
         }
     };
-
-    private class Detector implements Runnable {
-
-        private Mat mat;
-
-        public Detector(Mat mat) {
-            this.mat = mat;
-        }
-
-        @Override
-        public void run() {
-            Log.d("service", "event");
-            MatOfRect rect = new MatOfRect();
-            mCascadeClassifier.detectMultiScale(mat, rect);
-            Scalar renk = new Scalar(255, 0, 0);
-            for (Rect dik : rect.toArray()) {
-                Imgproc.rectangle(mat, new Point(dik.x, dik.y), new Point(dik.x + dik.width, dik.y + dik.height), renk);
-            }
-            Log.d("testCV", "" + rect.size());
-        }
-    }
 
     //http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html - haar classifier creation
     //https://solarianprogrammer.com/2015/05/08/detect-red-circles-image-using-opencv/ - circles
