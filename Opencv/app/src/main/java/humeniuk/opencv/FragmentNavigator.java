@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import humeniuk.opencv.ui.fragments.TrainingDetailsFragment;
 import humeniuk.opencv.ui.fragments.TrainingListFragment;
 
 public class FragmentNavigator {
@@ -18,7 +19,9 @@ public class FragmentNavigator {
         replace(TrainingListFragment.newInstance());
     }
 
-    public void showTrainingDetails(String id) {}
+    public void showTrainingDetails(String id) {
+        replace(TrainingDetailsFragment.newInstance(id));
+    }
 
     private void replace(Fragment fragment) {
         FragmentTransaction transaction = mFragmentManager.beginTransaction();
