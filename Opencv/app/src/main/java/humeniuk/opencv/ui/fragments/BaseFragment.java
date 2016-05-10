@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import humeniuk.opencv.FragmentNavigator;
+import humeniuk.opencv.ui.MainActivity;
 
 public abstract class BaseFragment extends Fragment {
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +35,14 @@ public abstract class BaseFragment extends Fragment {
 
     protected void restoreArguments(Bundle args) {
 
+    }
+
+    protected MainActivity getBaseActivity() {
+        return (MainActivity)getActivity();
+    }
+
+    protected FragmentNavigator getNavigator() {
+        return getBaseActivity().getNavigator();
     }
 
     abstract protected int getLayoutId();

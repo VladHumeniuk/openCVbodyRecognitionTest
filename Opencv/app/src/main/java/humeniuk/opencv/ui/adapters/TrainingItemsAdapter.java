@@ -28,7 +28,7 @@ public class TrainingItemsAdapter extends BaseRecyclerAdapter<TrainingItem> {
         ((TrainingItemHolder) holder).bind(mData.get(position));
     }
 
-    private class TrainingItemHolder extends RecyclerView.ViewHolder {
+    protected class TrainingItemHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.date) TextView mDate;
         @Bind(R.id.name) TextView mName;

@@ -29,7 +29,7 @@ public class TrainingAdapter extends BaseRecyclerAdapter<Training> {
         ((TrainingHolder) holder).bind(mData.get(position));
     }
 
-    private class TrainingHolder extends RecyclerView.ViewHolder {
+    protected class TrainingHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.date) TextView mDate;
 
