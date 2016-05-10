@@ -23,7 +23,7 @@ import humeniuk.opencv.R;
 import humeniuk.opencv.utils.DetectorExecutionManager;
 import humeniuk.opencv.utils.ExerciseHandler;
 
-public class MainActivity extends Activity {
+public class CameraActivity extends Activity {
 
     private static final String haarFileName = "/haarcascade_fullbody.xml";
     private String haarFile = "";
