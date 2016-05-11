@@ -11,14 +11,10 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
     protected OnItemSelectedListener mListener;
     protected List<T> mData;
 
-    public BaseRecyclerAdapter(LayoutInflater mInflater, OnItemSelectedListener mListener) {
+    public BaseRecyclerAdapter(LayoutInflater mInflater, OnItemSelectedListener mListener, List<T> data) {
         this.mInflater = mInflater;
         this.mListener = mListener;
-    }
-
-    public void swapData(List<T> data) {
         mData = data;
-        notifyDataSetChanged();
     }
 
     @Override

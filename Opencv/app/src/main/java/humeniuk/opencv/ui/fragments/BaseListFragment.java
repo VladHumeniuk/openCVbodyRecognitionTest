@@ -1,5 +1,6 @@
 package humeniuk.opencv.ui.fragments;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import butterknife.Bind;
@@ -21,14 +22,13 @@ public abstract class BaseListFragment extends BaseFragment {
         super.setupViews();
         mAdapter = createAdapter();
         mList.setAdapter(mAdapter);
-        loadData();
+        mList.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     public BaseRecyclerAdapter getAdapter() {
         return mAdapter;
     }
 
-    protected abstract void loadData();
     protected abstract BaseRecyclerAdapter createAdapter();
 
 }

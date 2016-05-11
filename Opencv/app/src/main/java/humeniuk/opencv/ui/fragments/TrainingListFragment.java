@@ -20,20 +20,15 @@ public class TrainingListFragment extends BaseListFragment {
     }
 
     @Override
-    protected void loadData() {
-        Realm realm = Realm.getDefaultInstance();
-        getAdapter().swapData(realm.where(Training.class).findAll());
-    }
-
-    @Override
     protected BaseRecyclerAdapter createAdapter() {
-        return new TrainingAdapter(LayoutInflater.from(getContext()), mListener);
+        return new TrainingAdapter(LayoutInflater.from(getContext()), mListener,
+                Realm.getDefaultInstance().where(Training.class).findAll());
     }
 
     private BaseRecyclerAdapter.OnItemSelectedListener mListener = new BaseRecyclerAdapter.OnItemSelectedListener() {
         @Override
         public void onItemSelected(String id) {
-
+            getNavigator().showTrainingDetails(id);
         }
     };
 }

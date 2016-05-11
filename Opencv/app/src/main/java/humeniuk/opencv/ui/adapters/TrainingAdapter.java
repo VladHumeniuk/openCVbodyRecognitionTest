@@ -1,12 +1,13 @@
 package humeniuk.opencv.ui.adapters;
 
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -15,8 +16,8 @@ import humeniuk.opencv.model.Training;
 
 public class TrainingAdapter extends BaseRecyclerAdapter<Training> {
 
-    public TrainingAdapter(LayoutInflater mInflater, OnItemSelectedListener mListener) {
-        super(mInflater, mListener);
+    public TrainingAdapter(LayoutInflater mInflater, OnItemSelectedListener mListener, List<Training> data) {
+        super(mInflater, mListener, data);
     }
 
     @Override

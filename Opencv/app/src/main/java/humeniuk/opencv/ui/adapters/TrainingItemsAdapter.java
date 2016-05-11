@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import humeniuk.opencv.R;
@@ -14,8 +16,8 @@ import humeniuk.opencv.model.TrainingItem;
 
 public class TrainingItemsAdapter extends BaseRecyclerAdapter<TrainingItem> {
 
-    public TrainingItemsAdapter(LayoutInflater mInflater, OnItemSelectedListener mListener) {
-        super(mInflater, mListener);
+    public TrainingItemsAdapter(LayoutInflater mInflater, OnItemSelectedListener mListener, List<TrainingItem> data) {
+        super(mInflater, mListener, data);
     }
 
     @Override
