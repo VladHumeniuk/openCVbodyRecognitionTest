@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal"
+    android:layout_marginBottom="1dp"
+    android:background="@color/white"
+    style="@style/MatchWidthWrapHeight">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:padding="5dp"/>
+    <View
+        android:id="@+id/colorizer1"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"/>
+    <LinearLayout
+        style="@style/MatchWidthWrapHeight"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/TextView"
+            android:textColor="@color/black"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/TextView"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/colorizer2"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

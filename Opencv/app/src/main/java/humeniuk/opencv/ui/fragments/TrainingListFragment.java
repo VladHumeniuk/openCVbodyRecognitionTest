@@ -7,6 +7,7 @@ import humeniuk.opencv.model.Training;
 import humeniuk.opencv.ui.adapters.BaseRecyclerAdapter;
 import humeniuk.opencv.ui.adapters.TrainingAdapter;
 import io.realm.Realm;
+import io.realm.Sort;
 
 public class TrainingListFragment extends BaseListFragment {
 
@@ -22,7 +23,7 @@ public class TrainingListFragment extends BaseListFragment {
     @Override
     protected BaseRecyclerAdapter createAdapter() {
         return new TrainingAdapter(LayoutInflater.from(getContext()), mListener,
-                Realm.getDefaultInstance().where(Training.class).findAll());
+                Realm.getDefaultInstance().where(Training.class).findAllSorted("time", Sort.DESCENDING));
     }
 
     private BaseRecyclerAdapter.OnItemSelectedListener mListener = new BaseRecyclerAdapter.OnItemSelectedListener() {

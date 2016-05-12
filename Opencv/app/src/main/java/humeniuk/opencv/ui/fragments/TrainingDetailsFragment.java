@@ -12,6 +12,7 @@ import humeniuk.opencv.model.TrainingItem;
 import humeniuk.opencv.ui.adapters.BaseRecyclerAdapter;
 import humeniuk.opencv.ui.adapters.TrainingItemsAdapter;
 import io.realm.Realm;
+import io.realm.Sort;
 
 public class TrainingDetailsFragment extends BaseListFragment {
 
@@ -42,7 +43,8 @@ public class TrainingDetailsFragment extends BaseListFragment {
     @Override
     protected BaseRecyclerAdapter createAdapter() {
         return new TrainingItemsAdapter(LayoutInflater.from(getContext()), mListener,
-                Realm.getDefaultInstance().where(TrainingItem.class).equalTo("training.id", mTrainingId).findAll());
+                Realm.getDefaultInstance().where(TrainingItem.class)
+                        .equalTo("training.id", mTrainingId).findAllSorted("time", Sort.ASCENDING));
     }
 
     @Override

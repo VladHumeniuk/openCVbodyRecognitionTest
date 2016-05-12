@@ -13,6 +13,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import humeniuk.opencv.R;
 import humeniuk.opencv.model.TrainingItem;
+import humeniuk.opencv.utils.ListColors;
 
 public class TrainingItemsAdapter extends BaseRecyclerAdapter<TrainingItem> {
 
@@ -27,13 +28,15 @@ public class TrainingItemsAdapter extends BaseRecyclerAdapter<TrainingItem> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((TrainingItemHolder) holder).bind(mData.get(position));
+        ((TrainingItemHolder) holder).bind(mData.get(position), position);
     }
 
     protected class TrainingItemHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.date) TextView mDate;
         @Bind(R.id.name) TextView mName;
+        @Bind(R.id.colorizer1) View mColorizer1;
+        @Bind(R.id.colorizer2) View mColorizer2;
 
         private String id;
 
@@ -43,10 +46,16 @@ public class TrainingItemsAdapter extends BaseRecyclerAdapter<TrainingItem> {
             itemView.setOnClickListener(mOnClickListener);
         }
 
-        public void bind(TrainingItem trainingItem) {
-            mDate.setText(DateFormat.format("dd MMMM yyyy hh:mm:ss", trainingItem.getTime()));
+        public void bind(TrainingItem trainingItem, int position) {
+            mDate.setText(DateFormat.format("dd MMMM yyyy HH:mm:ss", trainingItem.getTime()));
             mName.setText(trainingItem.getName());
             id = trainingItem.getId();
+
+            int color = ListColors.values().length;
+            color = color - (position % color) -1;
+            color = ListColors.values()[color].getColorRes();
+            mColorizer1.setBackgroundResource(color);
+            mColorizer2.setBackgroundResource(color);
         }
 
         public String getId() {
