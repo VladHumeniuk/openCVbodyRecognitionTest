@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="red">#ff2222</color>
-    <color name="green">#22ff22</color>
-    <color name="blue">#2222ff</color>
-    <color name="yellow">#ffff22</color>
-    <color name="purple">#ff22ff</color>
+    <color name="red">#77ff2222</color>
+    <color name="green">#7722ff22</color>
+    <color name="blue">#772222ff</color>
+    <color name="yellow">#77ffff22</color>
+    <color name="purple">#77ff22ff</color>
     <color name="black">#000</color>
     <color name="white">#fff</color>
+
+    <color name="action_bar">#55aafb</color>
+    <color name="action_bar_dark">#3388d9</color>
+
+    <color name="blue_button">#51AAFA</color>
+    <color name="blue_button_pressed">#6DB9FF</color>
 
 </resources>

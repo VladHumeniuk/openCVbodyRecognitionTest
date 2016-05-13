@@ -1,6 +1,7 @@
 package humeniuk.opencv.ui;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -36,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
     public FragmentNavigator getNavigator() {
         return mNavigator;
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager manager = getSupportFragmentManager();
+        if (manager.getBackStackEntryCount() > 1) {
+            manager.popBackStack();
+        } else {
+            finish();
+        }
     }
 
     private void initdb() {
