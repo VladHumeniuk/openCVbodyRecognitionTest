@@ -4,6 +4,8 @@ import humeniuk.opencv.utils.ExerciseStateStack;
 
 public class SquatExercise extends Exercise {
 
+    public static final String TAG = "Squat";
+
     @Override
     public boolean isDone(ExerciseStateStack stack) {
         ExerciseState last = stack.peek();
@@ -16,7 +18,7 @@ public class SquatExercise extends Exercise {
 
     @Override
     public String getTag() {
-        return "Squat"; //TODO make const or smth
+        return TAG;
     }
 
     @Override

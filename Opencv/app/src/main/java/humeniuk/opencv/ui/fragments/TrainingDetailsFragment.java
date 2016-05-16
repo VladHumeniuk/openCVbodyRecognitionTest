@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import humeniuk.opencv.R;
+import humeniuk.opencv.model.BendExercise;
+import humeniuk.opencv.model.SquatExercise;
 import humeniuk.opencv.model.Training;
 import humeniuk.opencv.model.TrainingItem;
 import humeniuk.opencv.ui.adapters.BaseRecyclerAdapter;
@@ -55,11 +57,11 @@ public class TrainingDetailsFragment extends BaseListFragment {
     @Override
     protected void setupViews() {
         super.setupViews();
-        mSquats.setText("Squats: " + String.valueOf(Realm.getDefaultInstance().where(TrainingItem.class).equalTo("training.id", mTrainingId)
-                .equalTo("name", "Squat").findAll().size()));
-        mBends.setText("Bends: " + Realm.getDefaultInstance().where(TrainingItem.class).equalTo("training.id", mTrainingId)
-                .equalTo("name", "Bend").findAll().size());
-        mDate.setText("Training start time: " + DateFormat.format("dd MMMM yyyy hh:mm:ss", Realm.getDefaultInstance().where(Training.class)
+        mSquats.setText(getString(R.string.squats_label) + String.valueOf(Realm.getDefaultInstance().where(TrainingItem.class).equalTo("training.id", mTrainingId)
+                .equalTo("name", SquatExercise.TAG).findAll().size()));
+        mBends.setText(getString(R.string.bends_label) + Realm.getDefaultInstance().where(TrainingItem.class).equalTo("training.id", mTrainingId)
+                .equalTo("name", BendExercise.TAG).findAll().size());
+        mDate.setText(getString(R.string.training_start_time_label) + DateFormat.format("dd MMMM yyyy HH:mm:ss", Realm.getDefaultInstance().where(Training.class)
                 .equalTo("id", mTrainingId).findAll().get(0).getTime()));
     }
 

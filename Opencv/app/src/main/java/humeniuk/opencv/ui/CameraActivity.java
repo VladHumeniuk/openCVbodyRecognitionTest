@@ -20,8 +20,10 @@ import java.io.InputStream;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import humeniuk.opencv.R;
+import humeniuk.opencv.model.Training;
 import humeniuk.opencv.utils.DetectorExecutionManager;
 import humeniuk.opencv.utils.ExerciseHandler;
+import io.realm.Realm;
 
 public class CameraActivity extends Activity {
 
