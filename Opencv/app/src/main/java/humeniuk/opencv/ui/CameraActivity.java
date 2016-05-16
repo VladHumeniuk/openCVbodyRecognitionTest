@@ -110,3 +110,7 @@ public class CameraActivity extends Activity {
     //https://gist.github.com/dynamicguy/3d1fce8dae65e765f7c4
     //http://opencvuser.blogspot.in/2011/08/creating-haar-cascade-classifier-aka.html
 }
+//opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt\
+//        -numStages 20 -minHitRate 0.999 -maxFalseAlarmRate 0.5 -numPos 1000\
+//        -numNeg 600 -w 160 -h 160 -mode ALL -precalcValBufSize 1024\
+//        -precalcIdxBufSize 1024

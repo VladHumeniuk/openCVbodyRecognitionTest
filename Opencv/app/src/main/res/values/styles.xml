@@ -22,7 +22,7 @@
     </style>
 
     <style name="TextView" parent="WrapContent">
-
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="BlueButton" parent="MatchWidthWrapHeight">

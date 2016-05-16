@@ -19,13 +19,11 @@
         <TextView
             android:id="@+id/name"
             style="@style/TextView"
-            android:textColor="@color/black"
             android:textSize="17sp"/>
 
         <TextView
             android:id="@+id/date"
             style="@style/TextView"
-            android:textColor="@color/black"
             android:textSize="12sp"/>
 
     </LinearLayout>

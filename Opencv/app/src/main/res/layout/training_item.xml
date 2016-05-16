@@ -14,9 +14,8 @@
         android:id="@+id/date"
         style="@style/TextView"
         android:layout_weight="1"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:padding="5dp"/>
+        android:textSize="20sp"
+        android:padding="10dp"/>
 
     <View
         android:id="@+id/colorizer2"
