@@ -9,9 +9,9 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import humeniuk.opencv.model.DetectionListener;
+import humeniuk.opencv.model.detection.DetectionListener;
 import humeniuk.opencv.model.ExerciseState;
-import humeniuk.opencv.model.InitialPositionDetector;
+import humeniuk.opencv.model.detection.detectors.InitialPositionDetector;
 import humeniuk.opencv.model.Position;
 
 public class DetectorExecutionManager {

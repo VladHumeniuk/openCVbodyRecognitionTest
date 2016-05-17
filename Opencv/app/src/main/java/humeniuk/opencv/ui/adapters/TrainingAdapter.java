@@ -11,9 +11,12 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import humeniuk.opencv.R;
 import humeniuk.opencv.model.Training;
+import humeniuk.opencv.model.TrainingItem;
 import humeniuk.opencv.utils.ListColors;
+import io.realm.Realm;
 
 public class TrainingAdapter extends BaseRecyclerAdapter<Training> {
 
@@ -64,6 +67,18 @@ public class TrainingAdapter extends BaseRecyclerAdapter<Training> {
                 mListener.onItemSelected(getId());
             }
         };
+
+        @OnClick(R.id.colorizer2)
+        protected void delete() {
+            Realm realm = Realm.getDefaultInstance();
+            realm.beginTransaction();
+            realm.where(Training.class)
+                    .equalTo("id", getId()).findAll().deleteAllFromRealm();
+            realm.where(TrainingItem.class)
+                    .equalTo("training.id", getId()).findAll().deleteAllFromRealm();
+            realm.commitTransaction();
+            notifyDataSetChanged();
+        }
     }
 
 

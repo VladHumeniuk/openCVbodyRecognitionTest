@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import humeniuk.opencv.model.BendExercise;
+import humeniuk.opencv.model.exercises.BendExercise;
 import humeniuk.opencv.model.ExerciseState;
 import humeniuk.opencv.model.Exercise;
-import humeniuk.opencv.model.SquatExercise;
+import humeniuk.opencv.model.exercises.SquatExercise;
 import humeniuk.opencv.model.Training;
 import humeniuk.opencv.model.TrainingItem;
 import io.realm.Realm;
@@ -55,7 +55,7 @@ public class ExerciseHandler {
         realm.beginTransaction();
         mTraining = realm.createObject(Training.class);
         mTraining.setId(UUID.randomUUID().toString());
-        mTraining.setId(UUID.randomUUID().toString());mTraining.setTime(System.currentTimeMillis());
+        mTraining.setTime(System.currentTimeMillis());
         realm.commitTransaction();
     }
 

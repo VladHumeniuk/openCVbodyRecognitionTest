@@ -4,5 +4,6 @@ public enum Position {
 
     NULL,
     INITIAL,
-    SQUAT_BOTTOM
+    SQUAT_BOTTOM,
+    BEND_BOTTOM
 }

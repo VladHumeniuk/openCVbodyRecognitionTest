@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import humeniuk.opencv.R;
-import humeniuk.opencv.model.BendExercise;
-import humeniuk.opencv.model.SquatExercise;
+import humeniuk.opencv.model.exercises.BendExercise;
+import humeniuk.opencv.model.exercises.SquatExercise;
 import humeniuk.opencv.model.Training;
 import humeniuk.opencv.model.TrainingItem;
 import humeniuk.opencv.ui.adapters.BaseRecyclerAdapter;
