@@ -9,8 +9,6 @@ import android.view.WindowManager;
 
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfRect;
-import org.opencv.objdetect.CascadeClassifier;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,15 +18,13 @@ import java.io.InputStream;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import humeniuk.opencv.R;
-import humeniuk.opencv.model.Training;
+import humeniuk.opencv.model.detection.detectors.BendBottomPositionDetector;
+import humeniuk.opencv.model.detection.detectors.BottomSquatPositionDetector;
+import humeniuk.opencv.model.detection.detectors.InitialPositionDetector;
 import humeniuk.opencv.utils.DetectorExecutionManager;
-import humeniuk.opencv.utils.ExerciseHandler;
-import io.realm.Realm;
 
 public class CameraActivity extends Activity {
 
-    private static final String haarFileName = "/haarcascade_fullbody.xml";
-    private String haarFile = "";
     private int frameCount = 0;
     private DetectorExecutionManager mDetectorManager;
 
@@ -38,7 +34,7 @@ public class CameraActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initHaarFile();
+        initHaars();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
@@ -62,11 +58,11 @@ public class CameraActivity extends Activity {
         super.onPause();
     }
 
-    private void initHaarFile() {
+    private void initHaarFile(String fileName, int res) {
         try {
-            InputStream inputStream = getResources().openRawResource(R.raw.haarcascade_fullbody);
+            InputStream inputStream = getResources().openRawResource(res);
 
-            File learnedInputFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + haarFileName);
+            File learnedInputFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + fileName);
             if (!learnedInputFile.exists()) {
                 FileOutputStream learnedDataOutputStream = new FileOutputStream(learnedInputFile);
                 byte[] buffer = new byte[300];
@@ -78,6 +74,12 @@ public class CameraActivity extends Activity {
         } catch (IOException e) {
             Log.d("testCV", e.getMessage());
         }
+    }
+
+    private void initHaars() {
+        initHaarFile(InitialPositionDetector.FILE_NAME, InitialPositionDetector.RES);
+//        initHaarFile(BottomSquatPositionDetector.FILE_NAME, BottomSquatPositionDetector.RES);
+//        initHaarFile(BendBottomPositionDetector.FILE_NAME, BendBottomPositionDetector.RES);
     }
 
     private CameraBridgeViewBase.CvCameraViewListener2 mCameraListener = new CameraBridgeViewBase.CvCameraViewListener2() {
